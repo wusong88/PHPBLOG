@@ -6,8 +6,6 @@ require('./lib/init.php');
 if (empty($_POST)) {
 	require(ROOT . '/view/admin/catadd.html');
 } else {
-
-	
 	//检测栏目是否为空
 	$cat['catname'] = trim($_POST['catname']);
 	// echo $cat['catname'];
