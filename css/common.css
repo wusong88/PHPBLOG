@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+body, div, dl, dt, dd, ul, ol, li, pre, form, fieldset, input, textarea, p, blockquote, th, tr, td, font, form, p, h1, h2, h3, h4, h5, h6, span, a, i ,button{ padding: 0px; margin: 0px; }
+h1, h2, h3, h4, h5, h6 { font-weight: normal; }
+em, i { font-style: normal; }
+
+img {border: none;vertical-align: middle;}
+ul, li { list-style-type: none; }
+a { text-decoration: none; color: #303030; outline: medium none; }
+a:hover { text-decoration: none; }
+.clearfix:after {content: ".";width: 0;height: 0;visibility: hidden;display: block;clear: both;overflow:hidden;}
+
+
+.aside{width: 100%;overflow: hidden;background: #eee;border-radius: 12px;box-sizing: border-box;padding: 20px;margin-bottom: 25px;}
+.aside h4{padding-bottom: 15px;font-weight: bold;}
+.aside ul li{line-height:25px;}
+
+
+.content-box{margin-bottom: 25px; border: 1px solid #999;border-radius: 10px;box-sizing: border-box;padding: 30px 20px;}
+
+.Leave-msg-box{width: 100%;overflow: hidden;background: #eee;border-radius: 10px;margin-top: 25px;box-sizing: border-box;padding:20px;}
+.Leave-msg-box dl{width: 100%;overflow: hidden;padding-bottom: 15px;}
+.Leave-msg-box dl dt{width: 80px;height: 80px;border-radius: 50px; overflow: hidden;float: left;}
+.Leave-msg-box dl dt img{width: 80px;height: 80px;}
+.Leave-msg-box dl dd{width: 300px;overflow: hidden;float: left;margin-left: 20px;}
+.Leave-msg-box dl dd b{display: block;padding-top: 20px;}
+.Leave-msg-box dl dd span{display: block;}
+.Leave-msg-box p{width: 100%;overflow: hidden;box-sizing: border-box;padding:10px;background: #fff; border-radius: 10px;line-height: 20px;}

@@ -5,8 +5,129 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title></title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="../../css/common.css"/>
+	<script src="../../js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../../js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
-	
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h1>
+					<a href=""><?php echo $art['title']; ?></a> 
+				</h1>
+				<!-- <p>
+					This is a template for a simple marketing or informational website. 
+				</p> -->
+			
+			</div>
+			<nav class="navbar navbar-default navbar-inverse" role="navigation">
+				<!-- <div class="navbar-header">
+					 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> <a class="navbar-brand" href="#">Brand</a>
+				</div> -->
+				
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						
+						<li>
+							 <a href="./catlist.php">栏目列表</a>
+						</li>
+						<li>
+							 <a href="./catadd.php">增加栏目</a>
+						</li>
+						<li>
+							 <a href="./artadd.php">增加文章</a>
+						</li>
+						<li>
+							 <a href="./artlist.php">文章列表</a>
+						</li>
+					</ul>
+					
+					
+				</div>
+				
+			</nav>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-8 column">
+			
+			
+			<div class="col-md-12 content-box" >
+				<!-- <h2><a href=""><?php echo $art['title']; ?></a> </h2> -->
+				<p style="margin-bottom: 10px;">
+					<span>时间：<?php echo date('Y/m/d',$art['pubtime']); ?></span>
+					<span style="margin-left: 20px;">所属栏目：<?php echo $art['catname']; ?></span>
+					<span style="margin-left: 20px;">评论数：<?php echo $art['comm']; ?></span>
+				</p>
+				<p><?php echo $art['content']; ?></p>
+			</div>
+			
+			<div class="col-md-12 comm">
+				<h3>评论区</h3>
+				
+				<div class="Leave-msg-box">
+					<dl>
+						<dt><img src="../../images/himg.png" /></dt>
+						<dd>
+							<b>老八</b>
+							<span>2020-01-08</span>
+						</dd>
+					</dl>
+					<p>咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩</p>
+				</div>
+				<div class="Leave-msg-box">
+					<dl>
+						<dt><img src="../../images/himg.png" /></dt>
+						<dd>
+							<b>老八</b>
+							<span>2020-01-08</span>
+						</dd>
+					</dl>
+					<p>咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩咔咔咔咔咔咔扩付付铺付扩铺付口铺扩铺付扩</p>
+				</div>
+			</div>
+			
+			<div class="col-md-12 comm">
+				<h3>留下你的评论</h3>
+				
+				
+				
+			</div>
+			
+			
+			
+		</div>
+		<div class="col-md-4 column">
+			<div class="col-md-12" style="padding-bottom: 25px;">
+				<div class="form-group">
+					<div class="col-sm-10"><input type="email" class="form-control" /></div>
+					<button class="btn btn-primary pull-right">搜索</button>
+				</div>
+			</div>
+			
+			<div class="col-md-12">
+
+				<div class="aside">
+					<h4>文章管理</h4>
+					<ul>
+						<li><a href="">文章列表</a></li>
+						<li><a href="">发布文章</a></li>
+					</ul>
+				</div>
+				<div class="aside">
+					<h4>个人中心</h4>
+					<ul>
+						<li><a href="">栏目列表</a></li>
+						<li><a href="">添加栏目</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
 </body>
 </html>

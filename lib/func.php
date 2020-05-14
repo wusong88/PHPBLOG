@@ -10,6 +10,7 @@ function succ($res){
 function error($res){
 	$result = 'fail';
 	require(ROOT . '/view/admin/info.html');
+	exit();
 }
 
 ?>	
