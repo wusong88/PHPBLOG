@@ -19,7 +19,7 @@ $sql = "select * from cat";
 $cats = mGetAll($sql);
 
 if(empty($_POST)){
-	$sql = "select title,content,cat_id from art where art_id=$art_id";
+	$sql = "select title,content,cat_id,arttag from art where art_id=$art_id";
 	$art = mGetRow($sql);
 	include(ROOT . '/view/admin/artedit.html');
 }else{
@@ -44,14 +44,37 @@ if(empty($_POST)){
 	//修改时间
 	$art['lastup'] = time();
 	
+	// 收集tag
+	$art['arttag'] = trim($_POST['tag']);
+	
 	//插入内容到art表
-
 	if(mExec('art', $art ,'update',"art_id=$art_id")){
 		error('文章修改失败');
 	}else{
-		// succ('文章修改成功');
-		header('Location: artlist.php');
+		//删除tag表所有的tag 在insert插入新的tag
+		$tag = explode(',', $art['arttag']); //索引数组
 		
+		$sql = "delete from tag where art_id=$art_id";
+		if(!mQuery($sql)){
+			succ('文章修改失败');
+		}
+		
+		
+		$sql = "insert into tag (art_id,tag) values ";
+		foreach($tag as $v){
+			$sql .= "(" . $art_id . ",'" . $v . "') ,";
+		}
+		$sql = rtrim($sql , ",");
+		if(mQuery($sql)){
+			succ('文章修改成功');
+		} else {
+			$sql = "delete from art where art_id=$art_id";
+			if(mQuery($sql)){
+				error('文章修改失败');
+			}
+		}
+		
+		header('Location: artlist.php');
 	}
 	
 	

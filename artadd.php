@@ -28,11 +28,48 @@ if(empty($_POST)){
 	//插入发布时间
 	$art['pubtime'] = time();
 	
+	// 收集tag
+	$art['arttag'] = trim($_POST['tag']);
+	
+	
 	//插入内容到art表
 	if(!mExec('art' , $art)){
 		error('文章发布失败');
 	}else{
-		succ('文章添加成功');
+		//判断是否有tag
+		$art['tag'] = trim($_POST['tag']);
+		if($art['tag'] == ''){
+			//将cat 的num 字段 当前栏目下的文章数 +1
+			$sql = "update cat set num=num+1 where cat_id=$art[cat_id]";
+			mQuery($sql);
+			
+			succ('文章添加成功');
+		}else{
+			//获取上次 insert 操作产生的主键id
+			$art_id = getLastId();
+			
+			$tag = explode(',', $art['tag']); //索引数组
+			$sql = "insert into tag (art_id,tag) values ";
+			foreach($tag as $v){
+				$sql .= "(" . $art_id . ",'" . $v . "') ,";
+			}
+			$sql = rtrim($sql , ",");
+			if(mQuery($sql)){
+				$sql = "update cat set num=num+1 where cat_id=$art[cat_id]";
+				mQuery($sql);
+				succ('文章添加成功');
+			} else {
+				$sql = "delete from art where art_id=$art_id";
+				if(mQuery($sql)){
+					$sql = "update cat set num=num-1 where cat_id=$art[cat_id]";
+					mQuery($sql);
+					error('文章添加失败');
+				}
+			}
+			
+			
+		}
+		
 	}
 	
 	

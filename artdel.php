@@ -14,11 +14,21 @@ if(!mGetRow($sql)){
 	error('文章不存在');
 }
 
+//获取文章栏目id
+$sql = "select cat_id from art where art_id=$art_id";
+$cat = mGetRow($sql);
+
+
 //删除文章
 $sql= "delete from art where art_id=$art_id";
 if(!mQuery($sql)){
 	error('文章删除失败');
 }else{
+	
+	//被删除文章所在栏目的文章数量减一
+	$sql = "update cat set num=num-1 where cat_id=$cat[cat_id]";
+	mQuery($sql);
+	
 	// succ('文章删除成功');
 	header('Location: artlist.php');
 }

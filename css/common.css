@@ -23,6 +23,9 @@ a:hover { text-decoration: none; }
 .Leave-msg-box dl dt{width: 80px;height: 80px;border-radius: 50px; overflow: hidden;float: left;}
 .Leave-msg-box dl dt img{width: 80px;height: 80px;}
 .Leave-msg-box dl dd{width: 300px;overflow: hidden;float: left;margin-left: 20px;}
-.Leave-msg-box dl dd b{display: block;padding-top: 20px;}
+.Leave-msg-box dl dd b{display: block;padding-top: 20px; color:#357ebd;}
 .Leave-msg-box dl dd span{display: block;}
 .Leave-msg-box p{width: 100%;overflow: hidden;box-sizing: border-box;padding:10px;background: #fff; border-radius: 10px;line-height: 20px;}
+
+.comm-tj{margin-top: 30px;}
+.comm-tj h3{padding-bottom: 30px;}

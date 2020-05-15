@@ -19,6 +19,27 @@
 					编辑文章 <small>Edit the articles</small>
 				</h1>
 			</div>
+			<nav class="navbar navbar-default navbar-inverse" role="navigation">
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li>
+							 <a href="./index.php">首页</a>
+						</li>
+						<li>
+							 <a href="./catlist.php">栏目列表</a>
+						</li>
+						<li>
+							 <a href="./catadd.php">增加栏目</a>
+						</li>
+						<li>
+							 <a href="./artlist.php">文章列表</a>
+						</li>
+						<li>
+							 <a href="./artadd.php">增加文章</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -74,7 +95,12 @@
 					</select>
 			    </div>
 			  </div>
-			  
+			  <div class="form-group">
+			    <label for="tag" class="col-sm-2 control-label">标签</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control" name="tag" id="tag" placeholder="" value="<?php echo $art['arttag'];?>">
+			    </div>
+			  </div>
 			  <div class="form-group">
 			      <label for="content" class="col-sm-2 control-label">内容</label>
 				  <div class="col-sm-10">
@@ -82,12 +108,7 @@
 				  </div>
 			  </div>
 			  
-			  <!-- <div class="form-group">
-			    <label for="firstname" class="col-sm-2 control-label">标签</label>
-			    <div class="col-sm-10">
-			      <input type="text" class="form-control" id="firstname" placeholder="">
-			    </div>
-			  </div> -->
+			  
 			  
 			  <div class="form-group">
 			    <div class="col-sm-offset-2 col-sm-10">
