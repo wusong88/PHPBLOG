@@ -57,6 +57,9 @@
 					<span style="margin-left: 20px;">所属栏目：<?php echo $art['catname']; ?></span>
 					<span style="margin-left: 20px;">评论数：<?php echo $art['comm']; ?></span>
 				</p>
+				<?php if(isset($art['pic'])) {?>
+					<img src="<?php echo $art['pic'];?>" />
+				<?php }?>
 				<p><?php echo $art['content']; ?></p>
 			</div>
 			
@@ -80,7 +83,9 @@
 			
 			<div class="col-md-12 content-box comm-tj">
 				<h3>留下你的评论</h3>
-				
+				<?php if(isset($rs) && ($rs == false)) {?>
+				<p 	style="color: #ff0000;">留言发布失败</p>
+				<?php }?>
 				<form class="form-horizontal" role="form" action="" method="post">
 				  <div class="form-group">
 				    <label for="nick" class="col-sm-2 control-label">姓名</label>

@@ -41,6 +41,9 @@
 						<li>
 							 <a href="./artadd.php">增加文章</a>
 						</li>
+						<li>
+							 <a href="./commlist.php">评论列表</a>
+						</li>
 					</ul>
 				</div>
 			</nav>
@@ -64,28 +67,16 @@
 			
 			
 			<ul class="pagination">
-				<li>
-					 <a href="#">Prev</a>
-				</li>
-				<li>
-					 <a href="#">1</a>
-				</li>
-				<li>
-					 <a href="#">2</a>
-				</li>
-				<li>
-					 <a href="#">3</a>
-				</li>
-				<li>
-					 <a href="#">4</a>
-				</li>
-				<li>
-					 <a href="#">5</a>
-				</li>
-				<li>
-					 <a href="#">Next</a>
-				</li>
+
+				<?php foreach($page as $k=>$v) {?>
+					<?php if($k == $curr) {?>
+					<li><a style="color: #333;background: #eee;" href="javascript:void(0);"><?php echo $k;} else {?></a></li>
+					<li><a href="index.php?<?php echo $v; ?>"><?php echo $k; ?></a></li>
+					<?php }?>
+				<?php }?>
+
 			</ul>
+			
 		</div>
 		<div class="col-md-4 column">
 			<div class="col-md-12" style="padding-bottom: 25px;">

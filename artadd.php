@@ -25,6 +25,22 @@ if(empty($_POST)){
 		error('内容不能为空');
 	}
 	
+	// print_r($_FILES);exit();
+	//判断是否有图片上传 且 error 是否为0
+	if ( !($_FILES['pic']['name'] == '' ) && $_FILES['pic']['error'] == 0 ) {
+		$filename = createDir() . '/' . randStr() . getExt($_FILES['pic']['name']);
+		if(	move_uploaded_file($_FILES['pic']['tmp_name'], ROOT . $filename)){
+			$art['pic'] = $filename;
+		}
+		
+		
+ 	}
+ 	
+	
+	
+	
+	
+	
 	//插入发布时间
 	$art['pubtime'] = time();
 	

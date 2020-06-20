@@ -15,8 +15,8 @@ if(!mGetRow($sql)){
 	header('Location: index.php');
 }
 
-
-$sql = "select title,content,pubtime,catname,comm from art inner join cat on art.cat_id=cat.cat_id where art_id=$art_id";
+//查询文章
+$sql = "select title,content,pubtime,catname,comm,pic from art inner join cat on art.cat_id=cat.cat_id where art_id=$art_id";
 $art = mGetRow($sql);
 // print_r($art);exit();
 
@@ -33,12 +33,29 @@ if(!empty($_POST)){
 	$comm['content'] = trim($_POST['content']);
 	$comm['pubtime'] = time();
 	$comm['art_id'] = $art_id;
+	$comm['ip'] = sprintf('%u', ip2long(getRealIp()));
+	
+	
 	$rs = mExec('comment',$comm);
 	
 	if($rs){
-		//评论发布成功 将art表的comm+1
-		$sql = "update art set comm=comm+1 where art_id=$art_id";
-		mQuery($sql);
+		
+		
+		$sql = "select comm from art where art_id=$art_id";
+		$rs = mQuery($sql);
+		// var_dump($rs);
+		$rs = mysql_fetch_row($rs);
+		if($rs[0] != 0){
+			//评论发布成功 将art表的comm+1
+			$sql = "update art set comm=comm+1 where art_id=$art_id";
+			mQuery($sql);
+		} else {
+			$sql = "update art set comm=1 where art_id=$art_id";
+			mQuery($sql);
+		}
+		
+		
+		
 		
 		//跳转到上个页面
 		$ref = $_SERVER['HTTP_REFERER'];
