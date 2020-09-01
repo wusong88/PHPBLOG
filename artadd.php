@@ -31,6 +31,10 @@ if(empty($_POST)){
 		$filename = createDir() . '/' . randStr() . getExt($_FILES['pic']['name']);
 		if(	move_uploaded_file($_FILES['pic']['tmp_name'], ROOT . $filename)){
 			$art['pic'] = $filename;
+			$art['thumb'] =  makeThumb($filename);
+			
+			// echo makeThumb($filename);
+			
 		}
 		
 		

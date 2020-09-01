@@ -149,4 +149,23 @@ function getLastId(){
 }
 
 
+/*
+	使用反斜线 转移字符串
+	@param arr 待转义的数组
+	@return arr 被转义后的数组
+*/
+
+function _addslashes($arr) {
+	foreach($arr as $k=>$v) {
+		if(is_string($v)){
+			$arr[$k] = addcslashes($v);
+		}else if(is_array($v)){
+			$arr[$k] = _addslashes($v);
+		}
+	}
+	return $arr;
+}
+
+
+
 ?>

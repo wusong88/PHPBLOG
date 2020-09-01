@@ -123,6 +123,11 @@ function makeThumb ($oimg,$sw=200,$sh=200) {
 	
 	//创建小画布
 	$spic = imagecreatetruecolor($sw,$sh);
+	
+	//创建白色
+	$white= imagecolorallocate($spic, 255, 255, 255 );
+	imagefill($spic,0,0,$white);
+	
 	//获取大图信息
 	list($bw,$bh,$btype) = getimagesize($opath);
 	$map = array(
@@ -132,15 +137,48 @@ function makeThumb ($oimg,$sw=200,$sh=200) {
 		15=>'imagecreatefromwbmp'
 	);
 	
+	if (!isset($map[$btype])) {
+		return false;
+	}
+	$opic = $map[$btype]($opath);//大图资源
 	
+	//计算缩略比
+	$rate = min($sw/$bw , $sh/$bh);
+	$zw = $bw * $rate;//最终放回小图宽
+	$zh = $bh * $rate;//最终放回小图高
+	
+
+	
+	imagecopyresampled($spic, $opic, ($sw-$zw)/2, ($sh-$zh)/2, 0, 0, $zw, $zh, $bw, $bh);
+	
+	imagepng($spic , $spath);
+	
+	imagedestroy($spic);
+	imagedestroy($opic);
+	return $simg;
 }
 
 
+/*
+  检查用户是否登录
+*/
+function acc(){
+	if (!isset($_COOKIE['name']) || !isset($_COOKIE['ccode'])) {
+		return false;
+	}
+	
+	return $_COOKIE['ccode'] === cCode($_COOKIE['name']);
+}
 
-
-
-
-
+/*
+  加密用户名
+  @param str $name 用户登录时输入的用户名
+  return str md5(用户名+salt)=>MD5码
+*/
+function cCode($name){
+	$salt = require(ROOT . '/lib/config.php');
+	return md5($name . '|' . $salt['salt']);
+}
 
 
 ?>	
